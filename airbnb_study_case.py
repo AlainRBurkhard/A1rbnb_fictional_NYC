@@ -9,7 +9,7 @@ from folium.plugins import MarkerCluster, FeatureGroupSubGroup
 from folium import plugins
 import plotly.graph_objects as go
 
-df = pd.read_csv('/Users/Ramonpoopy/Desktop/Repos/mini-curso-ds/archive/AB_NYC_2019.csv') #df = dataframe#
+df = pd.read_csv('AB_NYC_2019.csv') #df = dataframe#
 
 """ cleaning the date, nan empty cells
 """
