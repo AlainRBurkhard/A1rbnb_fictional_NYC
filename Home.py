@@ -41,8 +41,8 @@ with st.container():
     col1, col2 = st.columns(2, gap= "medium")
     with col1:
         st.plotly_chart(fig,use_container_width=True)
-   # with col2:
-    #    st.pyplot(fig1)
+    with col2:
+        st.pyplot(fig1)
     with col2:
         st.plotly_chart(fig2,use_container_width=True)
 
