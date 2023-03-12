@@ -27,7 +27,7 @@ std = round(df1['price'].std(), 2)
 
 # 4 avg metrics number minimum of nights
 
-metric4=df1.loc[:,'minimum_nights'].mean()
+metric4=round(df1.loc[:,'minimum_nights'].mean(),2)
 
 #  5 different categories of room type
 #question 4 of CEO
