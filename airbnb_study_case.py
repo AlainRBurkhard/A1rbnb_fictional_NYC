@@ -37,18 +37,14 @@ fig.update_layout(title='Distribution of Room Types')
 # top hosts
 
 top_host = df1.host_id.value_counts().head(10)
-top_host_df=pd.DataFrame(top_host)
-top_host_df.reset_index(inplace=True)
-top_host_df.rename(columns={'index':'Host_ID', 'host_id':'Properties'}, inplace=True)
+top_host_df = pd.DataFrame({'Host_ID': top_host.index.astype(str),
+                            'Properties': top_host.values})
 
-plt.clf() # Clear the Matplotlib figure
-fig1=sns.barplot(x="Host_ID", y="Properties", data=top_host_df,
-                 palette='Reds_d')
-fig1.set_title('Hosts with most properties in NYC')
-fig1.set_ylabel('Count of properties')
-fig1.set_xlabel('Host ID')
-fig1.set_xticklabels(fig1.get_xticklabels(), rotation=45)
-#histogram price range
+fig1 = px.bar(top_host_df, x='Host_ID', y='Properties', 
+             color='Properties', color_continuous_scale='Reds')
+fig1.update_layout(title='Hosts with most properties in NYC', 
+                  xaxis_title='Host ID', yaxis_title='Count of properties',
+                  xaxis_tickangle=-45)
 
 fig2 = px.histogram(df1.loc[df1['price']<1000,:], x='price', nbins=300, histnorm='', labels={'price':'Price'}, 
                     title='Distribution of Apartment Prices', 
