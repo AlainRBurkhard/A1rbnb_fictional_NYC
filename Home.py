@@ -27,7 +27,7 @@ from airbnb_study_case import fig5
 from airbnb_study_case import map2
 
 with st.container():
-    col1, col2, col3, col4, col5= st.columns(5, gap="medium")
+    col1, col2, col3, col4, col5= st.columns([1,1,1,1,1.5])
     with col1:
         st.metric(label='Number of Apt. registered',value = metric1, delta = None)
     with col2:
