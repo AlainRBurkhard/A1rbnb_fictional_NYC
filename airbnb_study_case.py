@@ -99,28 +99,83 @@ fig4.update_layout(legend_title='Room Type', legend=dict(yanchor="top", y=0.99, 
 # }
 
 # Create a map
-map2 = folium.Map(location=[40.73, -73.98], zoom_start=10)
+# map2 = folium.Map(location=[40.73, -73.98], zoom_start=10)
 
-# Create a MarkerCluster layer for each neighborhood group
-for neighborhood_group in df1['neighbourhood_group'].unique():
+# # Create a MarkerCluster layer for each neighborhood group
+# for neighborhood_group in df1['neighbourhood_group'].unique():
 
-    # Filter the data for the current neighborhood group
-    df_ng = df1[df1['neighbourhood_group'] == neighborhood_group]
+#     # Filter the data for the current neighborhood group
+#     df_ng = df1[df1['neighbourhood_group'] == neighborhood_group]
 
-    # Add a MarkerCluster layer for the current neighborhood group
-    marker_cluster = MarkerCluster(name=neighborhood_group)
-    map2.add_child(marker_cluster)
+#     # Add a MarkerCluster layer for the current neighborhood group
+#     marker_cluster = MarkerCluster(name=neighborhood_group)
+#     map2.add_child(marker_cluster)
 
-    # Add markers with pie charts for each room type
-    for index, row in df_ng.iterrows():
-        folium.Marker(
-            location=[row['latitude'], row['longitude']],
-            icon=folium.Icon(color=colors[row['room_type']]),
-            popup='<b>{}</b><br>Room type: {}<br>Avg price: ${:,.0f}<br>Count: {:,.0f}'.format(
-                neighborhood_group, row['room_type'], row['price'], row['id']),
-            tooltip='Neighborhood group: {}'.format(neighborhood_group)
-        ).add_to(marker_cluster)
+#     # Add markers with pie charts for each room type
+#     for index, row in df_ng.iterrows():
+#         folium.Marker(
+#             location=[row['latitude'], row['longitude']],
+#             icon=folium.Icon(color=colors[row['room_type']]),
+#             popup='<b>{}</b><br>Room type: {}<br>Avg price: ${:,.0f}<br>Count: {:,.0f}'.format(
+#                 neighborhood_group, row['room_type'], row['price'], row['id']),
+#             tooltip='Neighborhood group: {}'.format(neighborhood_group)
+#         ).add_to(marker_cluster)
 
-# Add a layer control to the map
-folium.LayerControl().add_to(map2)
+# # Add a layer control to the map
+# folium.LayerControl().add_to(map2)
 
+colors = {'Entire home/apt': 'blue', 'Private room': 'green', 'Shared room': 'red'}
+
+# Create a scattermapbox plot with a Marker cluster for each neighborhood group
+fig6 = px.scatter_mapbox(df, lat='latitude', lon='longitude', color='room_type', size='price',
+                        color_discrete_map=colors, zoom=10, hover_data=['neighbourhood_group', 'room_type', 'price', 'id'],
+                        mapbox_style='carto-positron')
+
+# Add a layer control to toggle the MarkerClusters by neighborhood group
+fig6.update_layout(mapbox={
+    'style': 'carto-positron',
+    'center': {'lon': -73.98, 'lat': 40.73},
+    'zoom': 10
+})
+fig6.update_layout(
+    margin={'l': 0, 't': 0, 'b': 0, 'r': 0},
+    height=800,
+    title={'text': "NYC Airbnb Listings", 'font': {'size': 24}, 'x': 0.5},
+    legend=dict(
+        yanchor="top",
+        y=0.99,
+        xanchor="left",
+        x=0.01
+    ),
+    updatemenus=[dict(
+        buttons=list([
+            dict(
+                args=[{'visible': [True, False, False]}],
+                label="Manhattan",
+                method="update"
+            ),
+            dict(
+                args=[{'visible': [False, True, False]}],
+                label="Brooklyn",
+                method="update"
+            ),
+            dict(
+                args=[{'visible': [False, False, True]}],
+                label="Queens",
+                method="update"
+            ),
+            dict(
+                args=[{'visible': [True, True, True]}],
+                label="All",
+                method="update"
+            )
+        ]),
+        direction="down",
+        pad={"r": 10, "t": 10},
+        showactive=True,
+        x=0.05,
+        xanchor="left",
+        y=1.1,
+        yanchor="top"
+    )]
+)
