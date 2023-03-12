@@ -13,7 +13,6 @@ import streamlit as st
 
 st.set_page_config( page_title= 'ff', page_icon = '📈', layout = 'wide')
 
-import nbimporter
 from airbnb_study_case import metric1
 from airbnb_study_case import metric2
 from airbnb_study_case import metric3
