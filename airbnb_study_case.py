@@ -33,6 +33,7 @@ metric4=round(df1.loc[:,'minimum_nights'].mean(),2)
 #question 4 of CEO
 md = df1.groupby('room_type')['id'].count().reset_index(name='Count')
 fig = pd.DataFrame(md)
+fig = room_type_df.rename(columns={'Count': 'Count %'})
 
 
 df1.host_id.astype(str)
@@ -74,21 +75,10 @@ fig3.update_layout(
 )
 
 
-sns.set_style('whitegrid')   # Set the style to whitegrid for a cleaner look
-sns.set_palette('Set1')      # Choose a color palette that works well with the data
-
-# Create the bar plot
-g = sns.catplot(x='neighbourhood_group', y='price', hue='room_type', kind='bar', data=df, height=5, aspect=1.5)
-
-# Extract the axes object
-ax = g.ax
-
-# Customize the plot
-ax.set_xlabel('Neighbourhood Group')  # Set the x-axis label
-ax.set_ylabel('Price per Night')  # Set the y-axis label
-ax.set_title('Average Listing Prices by Neighbourhood Group and Room Type')  # Set the title
-ax.legend(title='Room Type', loc='upper right', labels=['Entire home/apt', 'Private room', 'Shared room'], bbox_to_anchor=(1.15, 1)) # Adjust the legend position
-fig4 = plt.tight_layout()  # Adjust the layout to prevent overlapping text
+fig4 = px.bar(df, x='neighbourhood_group', y='price', color='room_type',
+             title='Average Listing Prices by Neighbourhood Group and Room Type',
+             labels={'neighbourhood_group': 'Neighbourhood Group', 'price': 'Price per Night', 'room_type': 'Room Type'})
+fig4.update_layout(legend_title='Room Type', legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01))
 
 # Group the data by neighborhood group and find the top 10 apartments with highest price for each group
 top_10 = (df1.groupby('neighbourhood_group').apply(lambda x: x.nlargest(5, 'price')))
