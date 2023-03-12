@@ -24,11 +24,11 @@ metric2 = df1.loc[:,'host_id'].nunique()
 
 mean = round(df1['price'].mean(), 2)
 std = round(df1['price'].std(), 2)
-metric3
+
 # 4 avg metrics number minimum of nights
 
 metric4=df1.loc[:,'minimum_nights'].mean()
-metric4 
+
 #  5 different categories of room type
 #question 4 of CEO
 md=df1.groupby('room_type')['id'].count()
