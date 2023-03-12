@@ -27,7 +27,7 @@ from airbnb_study_case import fig5
 from airbnb_study_case import map2
 
 with st.container():
-    col1, col2, col3, col4= st.columns(4, gap="medium")
+    col1, col2, col3, col4, col5= st.columns(5, gap="medium")
     with col1:
         st.metric(label='Number of Apt. registered',value = metric1, delta = None)
     with col2:
@@ -36,6 +36,8 @@ with st.container():
         st.metric(label='Avg. Price per Night', value = mean, delta = std)
     with col4:
         st.metric(label='Avg. Minimum Nights', value = metric4, delta = None)
+    with col5:
+        st.plotly_chart(fig,use_container_width=True)
         
         
 st.markdown("""----""")
