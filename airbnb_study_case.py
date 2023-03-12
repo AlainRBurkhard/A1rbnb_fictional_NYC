@@ -31,8 +31,8 @@ metric4=round(df1.loc[:,'minimum_nights'].mean(),2)
 
 #  5 different categories of room type
 #question 4 of CEO
-fig = df1['room_type'].value_counts().reset_index()
-fig.columns = ['Room Type', 'Count']
+md = df1.groupby('room_type')['id'].count().reset_index(name='Count')
+fig = pd.DataFrame(md)
 
 
 
