@@ -35,7 +35,7 @@ md = df1.groupby('room_type')['id'].count().reset_index(name='Count')
 fig = pd.DataFrame(md)
 
 
-
+df1.host_id.astype(str)
 top_host = df1.host_id.value_counts().head(10)
 top_host_df = pd.DataFrame({'Host_ID': top_host.index.astype(str),
                             'Properties': top_host.values})
