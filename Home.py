@@ -38,7 +38,7 @@ with st.container():
         st.metric(label='Avg. Minimum Nights', value = metric4, delta = None)
  
 with st.container():
-    col1, col2, col3 = st.columns(3, gap= "medium")
+    col1, col2, col3 = st.columns([0.8,1,1.5])
     with col1:
         st.plotly_chart(fig,use_container_width=True)
     with col2:
