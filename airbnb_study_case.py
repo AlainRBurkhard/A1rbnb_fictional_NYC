@@ -44,9 +44,9 @@ top_host = df1.host_id.value_counts().head(10)
 top_host_df = pd.DataFrame({'Host_ID': top_host.index.astype(str),
                             'Properties': top_host.values})
 
-fig = px.bar(top_host_df, x='Host_ID', y='Properties', 
+fig1 = px.bar(top_host_df, x='Host_ID', y='Properties', 
              color='Properties', color_continuous_scale='Reds')
-fig.update_layout(title='Hosts with most properties in NYC', 
+fig1.update_layout(title='Hosts with most properties in NYC', 
                   xaxis_title='Host ID', yaxis_title='Count of properties',
                   xaxis_tickangle=-45)
 
