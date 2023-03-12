@@ -11,7 +11,7 @@ from folium import plugins
 import streamlit as st
 
 
-st.set_page_config( page_title= 'ff', page_icon = '📈', layout = 'wide')
+st.set_page_config( page_title= 'A1RBNB Dashboard', page_icon = '📈', layout = 'wide')
 
 from airbnb_study_case import metric1
 from airbnb_study_case import metric2
