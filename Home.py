@@ -23,7 +23,7 @@ from airbnb_study_case import fig1
 from airbnb_study_case import fig2
 from airbnb_study_case import fig3
 from airbnb_study_case import fig4
-from airbnb_study_case import fig5
+#from airbnb_study_case import fig5
 from airbnb_study_case import fig6
 
 with st.container():
