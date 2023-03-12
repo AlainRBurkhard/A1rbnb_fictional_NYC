@@ -57,5 +57,5 @@ with st.container():
     col1, col2 =st.columns(2, gap= "medium")
     with col1:
         st.plotly_chart(fig5, use_container_width=True)
-    with col2:
-        st.markdown(map2._repr_html_(), unsafe_allow_html=True)
+    #with col2:
+     #   st.markdown(map2._repr_html_(), unsafe_allow_html=True)
