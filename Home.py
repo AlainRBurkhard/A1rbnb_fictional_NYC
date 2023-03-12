@@ -36,4 +36,26 @@ with st.container():
         st.metric(label='Avg. Price per Night', value = mean, delta = std)
     with col4:
         st.metric(label='Avg. Minimum Nights', value = metric4, delta = None)
-        
+ 
+with st.container():
+    col1, col2, col3 = st.columns(3, gap= "medium")
+    with col1:
+        st.plotly_chart(fig,use_container_width=True)
+    with col2:
+        st.pyplot(fig1)
+    with col3:
+        st.plotly_chart(fig2,use_container_width=True)
+
+with st.container():
+    col1, col2 = st.columns(2, gap= "medium")
+    with col1:
+        st.pyplot(fig3)
+    with col2:
+        st.pyplot(fig4)
+
+with st.container():
+    col1, col2 =st.columns(2, gap= "medium")
+    with col1:
+        st.plotly_chart(fig5, use_container_width=True)
+    with col2:
+        st.markdown(map2._repr_html_(), unsafe_allow_html=True)
