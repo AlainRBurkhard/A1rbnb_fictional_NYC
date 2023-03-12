@@ -16,6 +16,8 @@ st.set_page_config( page_title= 'ff', page_icon = '📈', layout = 'wide')
 from airbnb_study_case import metric1
 from airbnb_study_case import metric2
 from airbnb_study_case import metric4
+from airbnb_study_case import mean
+from airbnb_study_case import std
 from airbnb_study_case import fig
 from airbnb_study_case import fig1
 from airbnb_study_case import fig2
