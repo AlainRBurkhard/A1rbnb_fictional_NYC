@@ -31,11 +31,9 @@ metric4=round(df1.loc[:,'minimum_nights'].mean(),2)
 
 #  5 different categories of room type
 #question 4 of CEO
-md = df1.groupby('room_type')['id'].count()
-room_type_df = pd.DataFrame({'Room Type': md.index, 'Count': md.values})
+fig = df1['room_type'].value_counts().reset_index()
+fig.columns = ['Room Type', 'Count']
 
-fig = go.Figure(data=[go.Pie(labels=room_type_df['Room Type'], values=room_type_df['Count'])])
-fig.update_layout(title='Distribution of Room Types')
 
 
 top_host = df1.host_id.value_counts().head(10)
