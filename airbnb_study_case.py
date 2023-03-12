@@ -18,10 +18,6 @@ df.loc[:,cols]
 df1=df.loc[:,cols]
 df1 = df.dropna()
 
-# importing the df1 after clean to use in excel or tools as powerbi and tableau
-df1.to_csv('df1.csv')
-# 1 - number of apt registered
-
 metric1 = df1.loc[:,'id'].nunique()
 metric2 = df1.loc[:,'host_id'].nunique()
 # 3 - avg price of rent in NYC
