@@ -58,12 +58,21 @@ fig2.update_layout(
 )
 df2=df1[df1.price < 500]
 
-fig3=sns.violinplot(data=df2, x='neighbourhood_group', y='price')
-fig3.set_title('Density and distribution of prices for each neighberhood_group')
-df2=df1[df1.price < 500]
+fig3 = go.Figure(
+    go.Violin(
+        x=df2['neighbourhood_group'],
+        y=df2['price'],
+        box_visible=True,
+        meanline_visible=True
+    )
+)
 
-fig3=sns.violinplot(data=df2, x='neighbourhood_group', y='price')
-fig3.set_title('Density and distribution of prices for each neighberhood_group')
+fig3.update_layout(
+    title='Density and distribution of prices for each neighbourhood group',
+    xaxis_title='Neighborhood Group',
+    yaxis_title='Price'
+)
+
 
 sns.set_style('whitegrid')   # Set the style to whitegrid for a cleaner look
 sns.set_palette('Set1')      # Choose a color palette that works well with the data
@@ -80,6 +89,7 @@ ax.set_ylabel('Price per Night')  # Set the y-axis label
 ax.set_title('Average Listing Prices by Neighbourhood Group and Room Type')  # Set the title
 ax.legend(title='Room Type', loc='upper right', labels=['Entire home/apt', 'Private room', 'Shared room'], bbox_to_anchor=(1.15, 1)) # Adjust the legend position
 fig4 = plt.tight_layout()  # Adjust the layout to prevent overlapping text
+
 # Group the data by neighborhood group and find the top 10 apartments with highest price for each group
 top_10 = (df1.groupby('neighbourhood_group').apply(lambda x: x.nlargest(5, 'price')))
 # Reset the index to remove the multi-level grouping
