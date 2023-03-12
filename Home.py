@@ -5,9 +5,6 @@ import matplotlib.image as mpimg
 import folium
 import matplotlib.pyplot as plt
 import seaborn as sns
-import panel as pn
-pn.extension('tabulator')
-import hvplot.pandas
 import matplotlib.pyplot as plt
 from folium.plugins import MarkerCluster, FeatureGroupSubGroup
 from folium import plugins
