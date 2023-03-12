@@ -40,6 +40,8 @@ top_host = df1.host_id.value_counts().head(10)
 top_host_df=pd.DataFrame(top_host)
 top_host_df.reset_index(inplace=True)
 top_host_df.rename(columns={'index':'Host_ID', 'host_id':'Properties'}, inplace=True)
+
+plt.clf() # Clear the Matplotlib figure
 fig1=sns.barplot(x="Host_ID", y="Properties", data=top_host_df,
                  palette='Reds_d')
 fig1.set_title('Hosts with most properties in NYC')
