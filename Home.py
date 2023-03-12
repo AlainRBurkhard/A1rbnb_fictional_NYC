@@ -37,7 +37,7 @@ with st.container():
     with col4:
         st.metric(label='Avg. Minimum Nights', value = metric4, delta = None)
     with col5:
-        st.plotly_chart(fig,use_container_width=True)
+        st.write(room_type_dist)
         
         
 st.markdown("""----""")
