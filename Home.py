@@ -24,7 +24,7 @@ from airbnb_study_case import fig2
 from airbnb_study_case import fig3
 from airbnb_study_case import fig4
 from airbnb_study_case import fig5
-from airbnb_study_case import map2
+from airbnb_study_case import fig6
 
 with st.container():
     col1, col2, col3, col4, col5= st.columns([1,1,1,1,1.5])
@@ -58,4 +58,4 @@ with st.container():
 
 st.markdown("""----""")
 with st.container():
-    st.markdown(map2._repr_html_(), unsafe_allow_html=True)
+    st.plotly_chart(fig6, use_container_width=True)
