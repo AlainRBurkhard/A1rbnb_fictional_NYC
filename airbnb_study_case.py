@@ -79,24 +79,24 @@ fig4 = px.bar(df, x='neighbourhood_group', y='price', color='room_type',
              labels={'neighbourhood_group': 'Neighbourhood Group', 'price': 'Price per Night', 'room_type': 'Room Type'})
 fig4.update_layout(legend_title='Room Type', legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01))
 
-# Group the data by neighborhood group and find the top 10 apartments with highest price for each group
-top_10 = (df1.groupby('neighbourhood_group').apply(lambda x: x.nlargest(5, 'price')))
-# Reset the index to remove the multi-level grouping
-top_10 = top_10.reset_index(drop=True)
+# # Group the data by neighborhood group and find the top 10 apartments with highest price for each group
+# top_10 = (df1.groupby('neighbourhood_group').apply(lambda x: x.nlargest(5, 'price')))
+# # Reset the index to remove the multi-level grouping
+# top_10 = top_10.reset_index(drop=True)
 
-# Create a scatter mapbox plot with markers for the top 10 apartments in each neighborhood group
-fig5 = px.scatter_mapbox(top_10, lat="latitude", lon="longitude", hover_name="neighbourhood_group", hover_data=["price"],
-                        color="neighbourhood_group", zoom=10, height=500, size=[1]*len(top_10))
+# # Create a scatter mapbox plot with markers for the top 10 apartments in each neighborhood group
+# fig5 = px.scatter_mapbox(top_10, lat="latitude", lon="longitude", hover_name="neighbourhood_group", hover_data=["price"],
+#                         color="neighbourhood_group", zoom=10, height=500, size=[1]*len(top_10))
 
-# Customize the map layout
-fig5.update_layout(mapbox_style="open-street-map")
-fig5.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+# # Customize the map layout
+# fig5.update_layout(mapbox_style="open-street-map")
+# fig5.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
-colors = {
-    'Entire home/apt': 'blue',
-    'Private room': 'green',
-    'Shared room': 'red'
-}
+# colors = {
+#     'Entire home/apt': 'blue',
+#     'Private room': 'green',
+#     'Shared room': 'red'
+# }
 
 # Create a map
 map2 = folium.Map(location=[40.73, -73.98], zoom_start=10)
